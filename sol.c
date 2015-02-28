@@ -10,7 +10,7 @@ struct root
 
 void print_root(struct root x)
 {
-    printf("(%+lf; %+lf)", x.r, x.i);
+    printf("( %+lf ; %+lf )", x.r, x.i);
 }
 
 int read_col(int a_flag, int b_flag, int c_flag, int _a, int _b, int _c, int complex)

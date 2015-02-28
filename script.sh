@@ -13,9 +13,9 @@ else
     then
 	if [ "$complex" = 1 ] 
         then
-            cat $file | ./sol -i >> answer.txt
+            cat $file | ./sol -i | tr '.' ',' >> answer.txt
         else 
-            cat $file | ./sol >> answer.txt
+            cat $file | ./sol | tr '.' ',' >> answer.txt
         fi
     else 
         echo "File $file not foud."
@@ -23,6 +23,12 @@ else
 fi
 
 done
-#echo; echo
 
-cat answer.txt | awk ' {print $2, $4, $7, $9} '
+echo "Answers are:"
+cat answer.txt
+
+echo "Sort by biggest root:"
+sort -k7 -g -k9 -g answer.txt > sorted.txt
+cat sorted.txt
+
+cat sorted.txt | awk '{if ("$9" = "0"){print $9}}'
