@@ -27,8 +27,15 @@ done
 echo "Answers are:"
 cat answer.txt
 
-echo "Sort by biggest root:"
+echo -e "\nSort by biggest root:"
 sort -k7 -g -k9 -g answer.txt > sorted.txt
 cat sorted.txt
 
-cat sorted.txt | awk '{if ("$9" = "0"){print $9}}'
+echo -e "\nOnly complex roots:"
+awk '($9!~/([+-]0,000000)/) || ($4!~/[+-]0,000000/)  {print}' sorted.txt > complexrootsonly.txt
+cat complexrootsonly.txt
+
+echo -e "\nNumber of unique strings are:"
+cat complexrootsonly.txt | uniq | wc -l
+
+rm answer.txt sorted.txt complexrootsonly.txt
