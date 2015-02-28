@@ -18,7 +18,7 @@ else
             cat $file | ./sol | tr '.' ',' >> answer.txt
         fi
     else 
-        echo "File $file not foud."
+        echo "File $file not found."
     fi
 fi
 
